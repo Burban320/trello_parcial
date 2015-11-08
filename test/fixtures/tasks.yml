@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  description: MyText
+  title: Tarea1
+  description: "Hello World"
   end_date: 2015-11-08 16:28:48
-  author_id: 
+  author: one 
 
 two:
-  title: MyString
-  description: MyText
+  title: Tarea2
+  description: "Programming Rocks"
   end_date: 2015-11-08 16:28:48
-  author_id: 
+  author: two
