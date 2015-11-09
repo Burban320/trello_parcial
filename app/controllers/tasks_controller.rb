@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.order('created_at desc')
+    @tasks = Task.order('end_date asc')
   end
 
   # GET /tasks/1
@@ -44,7 +44,7 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
-    @task = current_author.tasks.find(params[:id])
+    #@task = current_author.tasks.find(params[:id])
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
@@ -74,6 +74,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title, :description, :end_date, :author_id)
+      params.require(:task).permit(:title, :description, :end_date, :author_id, :finished)
     end
 end

@@ -2,29 +2,85 @@
 
 <%= link_to 'New Task', new_task_path, class: 'button' %>
 
-
+  <h2>Unfinished Tasks</h2>
+  <!-- TAREAS VENCIDAS -->
     <% @tasks.each do |task| %>
-     <hr>
-      <div class="row">
-        <div class="columns large-9 medium-6">
-          <blockquote>
-            <%= task.title %>
-            <cite><%= task.author.first_name%> <%= task.author.last_name %> - <em><%= time_ago_in_words(task.created_at) %> ago</em></cite>
-            <cite>Created:<%= task.created_at %></cite>
-            <cite>End Date:<%= task.end_date %></cite>
-            <cite><%= task.description %></cite>
-          </blockquote>
-        </div>
-        <div class="columns large-3 medium-6">
-          <ul class="inline-list">
-            <li><%= link_to 'Show', task %></li>
-            <li><%= link_to 'Edit', edit_task_path(task) %></li>
-            <li><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></li>      
-          </ul>
-        </div>
-      </div>
-      
-      
+      <% if task::finished != true %>
+        <% if task::end_date < Time.now.utc%>
+         <hr>
+          <div class="row">
+            <div class="columns large-9 medium-6">
+              <blockquote>
+                <%= task.title %>
+                <cite><%= task.author.first_name%> <%= task.author.last_name %> - <em><%= time_ago_in_words(task.created_at) %> ago</em></cite>
+                <cite>Created:<%= task.created_at %></cite>
+                <cite>End Date:<%= task.end_date %></cite>
+                <cite><%= task.description %></cite>
+              </blockquote>
+            </div>
+            <div class="columns large-3 medium-6">
+              <ul class="inline-list">
+                <li><%= link_to 'Show', task %></li>
+                <li><%= link_to 'Edit', edit_task_path(task) %></li>
+                <li><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></li>      
+              </ul>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     <% end %>
+  <!-- TAREAS AUN NO VENCIDAS -->  
+    <% @tasks.each do |task| %>
+      <% if task::finished != true %>
+        <% if task::end_date >= Time.now.utc%>
+         <hr>
+          <div class="row">
+            <div class="columns large-9 medium-6">
+              <blockquote>
+                <%= task.title %>
+                <cite><%= task.author.first_name%> <%= task.author.last_name %> - <em><%= time_ago_in_words(task.created_at) %> ago</em></cite>
+                <cite>Created:<%= task.created_at %></cite>
+                <cite>End Date:<%= task.end_date %></cite>
+                <cite><%= task.description %></cite>
+              </blockquote>
+            </div>
+            <div class="columns large-3 medium-6">
+              <ul class="inline-list">
+                <li><%= link_to 'Show', task %></li>
+                <li><%= link_to 'Edit', edit_task_path(task) %></li>
+                <li><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></li>      
+              </ul>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>    
+
+  <!-- TAREAS TERMINADAS -->
+  <h2>Finished Tasks</h2>  
+    
+    <% @tasks.each do |task| %>
+      <% if task::finished == true %>
+       <hr>
+        <div class="row">
+          <div class="columns large-9 medium-6">
+            <blockquote>
+              <%= task.title %>
+              <cite><%= task.author.first_name%> <%= task.author.last_name %> - <em><%= time_ago_in_words(task.created_at) %> ago</em></cite>
+              <cite>Created:<%= task.created_at %></cite>
+              <cite>End Date:<%= task.end_date %></cite>
+              <cite><%= task.description %></cite>
+            </blockquote>
+          </div>
+          <div class="columns large-3 medium-6">
+            <ul class="inline-list">
+              <li><%= link_to 'Show', task %></li>
+              <li><%= link_to 'Edit', edit_task_path(task) %></li>
+              <li><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></li>      
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    <% end %>    
 
 

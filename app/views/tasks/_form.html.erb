@@ -24,6 +24,11 @@
     <%= f.datetime_select :end_date %>
   </div>
   
+  <div class="field">
+    <%= f.label :finished %><br>
+    <%= f.check_box :finished %>
+  </div>
+  
   <div class="actions">
     <%= f.submit nil, class: 'button' %>
   </div>
