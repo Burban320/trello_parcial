@@ -1,32 +1,30 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Tasks</h1>
 
-<%= link_to 'New Task', new_task_path %>
+<%= link_to 'New Task', new_task_path, class: 'button' %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>End date</th>
-      <th>Author</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
     <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.title %></td>
-        <td><%= task.description %></td>
-        <td><%= task.end_date %></td>
-        <td><%= task.author %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+     <hr>
+      <div class="row">
+        <div class="columns large-9 medium-6">
+          <blockquote>
+            <%= task.title %>
+            <cite><%= task.author %> - <em><%= time_ago_in_words(task.created_at) %> ago</em></cite>
+            <cite>Created:<%= task.created_at %></cite>
+            <cite>End Date:<%= task.end_date %></cite>
+            <cite><%= task.description %></cite>
+          </blockquote>
+        </div>
+        <div class="columns large-3 medium-6">
+          <ul class="inline-list">
+            <li><%= link_to 'Show', task %></li>
+            <li><%= link_to 'Edit', edit_task_path(task) %></li>
+            <li><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></li>      
+          </ul>
+        </div>
+      </div>
+      
+      
     <% end %>
-  </tbody>
-</table>
+
 
