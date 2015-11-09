@@ -39,7 +39,7 @@
           <li class="divider"></li>
           <% if author_signed_in? %>
           <li>
-            <%= link_to current_author.first_name+ current_author.last_name, edit_author_registration_path %>
+            <%= link_to current_author.first_name+" "+ current_author.last_name, edit_author_registration_path %>
           </li>
           <li>
             <%= link_to 'Log Out', destroy_author_session_path, method: :delete %>

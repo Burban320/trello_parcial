@@ -9,7 +9,7 @@
         <div class="columns large-9 medium-6">
           <blockquote>
             <%= task.title %>
-            <cite><%= task.author %> - <em><%= time_ago_in_words(task.created_at) %> ago</em></cite>
+            <cite><%= task.author.first_name%> <%= task.author.last_name %> - <em><%= time_ago_in_words(task.created_at) %> ago</em></cite>
             <cite>Created:<%= task.created_at %></cite>
             <cite>End Date:<%= task.end_date %></cite>
             <cite><%= task.description %></cite>

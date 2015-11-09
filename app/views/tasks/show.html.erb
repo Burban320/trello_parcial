@@ -9,13 +9,23 @@
 </p>
 
 <p>
+  <strong>Duration:</strong>
+  <%= time_ago_in_words(@task.created_at) %> ago
+</p>
+
+<p>
+  <strong>Created:</strong>
+  <%= @task.created_at %>
+</p>
+
+<p>
   <strong>End date:</strong>
   <%= @task.end_date %>
 </p>
 
 <p>
   <strong>Author:</strong>
-  <%= @task.author %>
+  <%= @task.author.first_name %> <%= @task.author.last_name %>
 </p>
 
-<%= link_to 'Edit', edit_task_path(@task), class: 'button' %> |
+<%= link_to 'Edit', edit_task_path(@task), class: 'button' %> 
