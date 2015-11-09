@@ -9,7 +9,11 @@
 </p>
 
 <!--diff=@task.end_date.to_i - @task.created_at.to_i;
-diff.hours-->
+diff.hours
+----------------------------
+start_time=(@task.end_date)
+end_time=(@task.end_date)
+TimeDifference.between(start_time, end_time).in_hours--> 
 <p>
   <strong>Duration:</strong>
   Expected to be finished in <%= distance_of_time_in_words(@task.end_date.to_i, @task.created_at.to_i) %> 
